@@ -15,7 +15,7 @@
     <br>
     <br>
     <div>
-      <input type="radio" id="cool" name="isCool" [value]=true [ngModel]="pokemon.isCool"
+      <input type="radio" id="cool" name="isCool" [value]=true [ngModel]=" pokemon.isCool"
         (ngModelChange)="toggleIsCool($event)" />
       <label for="cool">Cool</label>
       <br>
@@ -25,7 +25,7 @@
     </div>
     <br>
     <br>
-    <!-- Radio Buttons -->
+    <!-- Checkboxes -->
     <h3>Check Boxes</h3>
     <span>
       name: value ----> "acceptTerms": true
@@ -37,12 +37,40 @@
         Please check to accept terms.
       </label>
     </div>
+    <br>
+    <br>
+    <!-- Select & Option -->
+    <h3>Select & Option</h3>
+    <label>Slect a type:
+      <select name="pokemonType" [ngModel]="pokemon?.name">
+        <option *ngFor="let type of pokemonTypes" [value]="type.value" [selected]="type.value === pokemon.type">
+          {{type.value}}
+        </option>
+      </select>
+    </label>
+    <br>
+    <br>
+    <!-- Form Validation -->
+    <h3>Form Validation</h3>
+    <p>Using template "reference(#)" with "ngModel"</p>
+
+    <div>
+      <label>
+        <input type="radio" name="isValid" [value]=true [ngModel]="pokemon.isCool" #pokemonName="ngModel" />
+        cool
+      </label>
+      <label>
+        <input type="radio" name="isValid" [value]=false [ngModel]="pokemon.isCool" #pokemonName="ngModel" />
+        not cool
+      </label>
+    </div>
   </form>
   <br>
 
   <div>
     MODEL: {{pokemon | json}} <br>
-    FORM:{{form.value | json}}
+    FORM:{{form.value | json}} <br>
+    ERROR: <div *ngIf="!pokemonName.pristine">NOT PRISTINE</div>
   </div>
 
 </div>

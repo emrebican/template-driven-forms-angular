@@ -5,3 +5,8 @@ export interface IPokemon {
   isCool: boolean;
   acceptTerms: boolean;
 }
+
+export interface IPokemonType {
+  key: number;
+  value: string;
+}
