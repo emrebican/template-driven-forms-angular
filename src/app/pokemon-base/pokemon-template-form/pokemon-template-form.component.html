@@ -1,14 +1,34 @@
 <div>
   <form #form="ngForm">
+    <h3>Inputs</h3>
     <label>Pokemon Name:</label>
     <input type="text" [(ngModel)]="pokemon.name" name="name" />
+    <br>
+    <br>
+    <!-- Radio Buttons -->
+    <h3>Radio Buttons</h3>
+    <p>One at a time</p>
+    <span>
+      name: value ----> "isCool":true <br>
+      name: value ----> "isCool":false
+    </span>
+    <br>
+    <br>
+    <div>
+      <input type="radio" id="cool" name="isCool" [value]=true [ngModel]="pokemon.isCool"
+        (ngModelChange)="toggleIsCool($event)" />
+      <label for="cool">Cool</label>
+      <br>
+      <input type="radio" id="notCool" name="isCool" [value]=false [ngModel]="pokemon.isCool"
+        (ngModelChange)="toggleIsCool($event)" />
+      <label for="notCool">Not Cool</label>
+    </div>
   </form>
   <br>
-  MODEL: {{pokemon | json}} <br>
-  FORM:{{form.value | json}}
-  <br>
-  <ul>
-    <li>Template Reference</li>
-    <li>2 Way Binding</li>
-  </ul>
+
+  <div>
+    MODEL: {{pokemon | json}} <br>
+    FORM:{{form.value | json}}
+  </div>
+
 </div>

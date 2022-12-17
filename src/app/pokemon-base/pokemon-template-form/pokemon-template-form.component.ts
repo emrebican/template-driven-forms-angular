@@ -18,5 +18,7 @@ export class PokemonTemplateFormComponent implements OnInit {
     });
   }
 
-  getPokemon() {}
+  toggleIsCool(event: any) {
+    console.log(event);
+  }
 }
