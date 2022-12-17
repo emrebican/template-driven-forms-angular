@@ -23,6 +23,20 @@
         (ngModelChange)="toggleIsCool($event)" />
       <label for="notCool">Not Cool</label>
     </div>
+    <br>
+    <br>
+    <!-- Radio Buttons -->
+    <h3>Check Boxes</h3>
+    <span>
+      name: value ----> "acceptTerms": true
+    </span>
+    <br>
+    <div>
+      <label>
+        <input type="checkbox" name="acceptTerms" [(ngModel)]="pokemon.acceptTerms" />
+        Please check to accept terms.
+      </label>
+    </div>
   </form>
   <br>
 

@@ -3,4 +3,5 @@ export interface IPokemon {
   name: string;
   type: string;
   isCool: boolean;
+  acceptTerms: boolean;
 }
