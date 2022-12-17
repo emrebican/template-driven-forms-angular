@@ -1,0 +1,45 @@
+<h1>Template Driven Forms (ngForm)</h1>
+
+<h3>Two types of forms in Angular</h3>
+<p>1 -- Template (Simple, not testable)</p>
+<p>2 -- Reactive (Scalable, Complex, testable)</p>
+
+<br>
+<br>
+<ol>
+    <li>
+        <h3>Build</h3>
+        <p>html x model</p>
+    </li>
+    <li>
+        <h3>Bind</h3>
+        <div [ngStyle]="{'border': '1px solid #212121', 'display':'inline-block', 'padding': '10px'}">
+            <code>
+                form #form="ngForm" <br>
+                    ...input [(ngModel)]="modelName.property" name="property" / <br>
+                /form
+            </code>
+        </div>
+
+    </li>
+    <li>
+        <h3>Track</h3>
+        <p>Validation</p>
+    </li>
+    <li>
+        <h3>Submit</h3>
+    </li>
+</ol>
+<br>
+<br>
+<ng-container *ngIf="pokemonList.length; then viewPokemons else noPokemons"></ng-container>
+<ng-template #viewPokemons>
+    <app-pokemon-detail *ngFor="let pokemon of pokemonList" [detail]="pokemon" (remove)="handleRemove($event)"
+        (toggle)="handleToggle($event)"></app-pokemon-detail>
+</ng-template>
+
+<ng-template #noPokemons>There is no pokemon to show</ng-template>
+<br>
+<br>
+<br>
+<app-pokemon-template-form></app-pokemon-template-form>

@@ -1,0 +1,14 @@
+<div>
+  <form #form="ngForm">
+    <label>Pokemon Name:</label>
+    <input type="text" [(ngModel)]="pokemon.name" name="name" />
+  </form>
+  <br>
+  MODEL: {{pokemon | json}} <br>
+  FORM:{{form.value | json}}
+  <br>
+  <ul>
+    <li>Template Reference</li>
+    <li>2 Way Binding</li>
+  </ul>
+</div>
