@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
@@ -15,11 +16,7 @@ import { PokemonTemplateFormComponent } from './pokemon-template-form/pokemon-te
     PokemonTemplateFormComponent
   ],
   imports: [CommonModule, FormsModule, HttpClientModule],
-  exports: [
-    PokemonListComponent,
-    PokemonDetailComponent,
-    PokemonTemplateFormComponent
-  ],
+  exports: [PokemonListComponent, PokemonDetailComponent],
   providers: [PokemonService]
 })
 export class PokemonBaseModule {}

@@ -66,11 +66,23 @@
     </div>
   </form>
   <br>
-
   <div>
     MODEL: {{pokemon | json}} <br>
     FORM:{{form.value | json}} <br>
     ERROR: <div *ngIf="!pokemonName.pristine">NOT PRISTINE</div>
   </div>
+  <br>
+  <br>
+  <br>
+  <!-- Submitting Form (ngSubmit) -->
+  <h3>Submitting Form (ngSubmit)</h3>
+  <p>Posting data. Storing object in a database.</p>
+  <br>
+  <form #form="ngForm" (ngSubmit)="handleSubmit(form)">
+    <input type="text" [(ngModel)]="pokemon.id" name="id"> <br>
+    <input type="text" [(ngModel)]="pokemon.name" name="name"> <br>
+    <input type="text" [(ngModel)]="pokemon.type" name="type"> <br>
+    <button type="submit" [disabled]="!form.valid">save</button>
+  </form>
 
 </div>
