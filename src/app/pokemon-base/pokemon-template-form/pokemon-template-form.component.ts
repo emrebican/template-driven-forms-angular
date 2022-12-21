@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IPokemon, IPokemonType } from 'src/app/model/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -11,7 +12,11 @@ export class PokemonTemplateFormComponent implements OnInit {
   pokemon!: IPokemon;
   pokemonTypes: IPokemonType[];
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.pokemonTypes = [
       { key: 0, value: 'Fire' },
       { key: 1, value: 'Water' },
@@ -20,9 +25,15 @@ export class PokemonTemplateFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pokemonService.getPokemon(1).subscribe((data: IPokemon) => {
-      this.pokemon = data;
+    this.route.params.subscribe((data: Params) => {
+      this.pokemonService.getPokemon(1).subscribe((data: IPokemon) => {
+        this.pokemon = data;
+      });
     });
+  }
+
+  back(): void {
+    this.router.navigate(['/pokemon']);
   }
 
   toggleIsCool(event: any) {

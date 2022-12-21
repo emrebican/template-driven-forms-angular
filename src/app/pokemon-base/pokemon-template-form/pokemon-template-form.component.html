@@ -3,86 +3,118 @@
     <h3>Inputs</h3>
     <label>Pokemon Name:</label>
     <input type="text" [(ngModel)]="pokemon.name" name="name" />
-    <br>
-    <br>
+    <br />
+    <br />
     <!-- Radio Buttons -->
     <h3>Radio Buttons</h3>
     <p>One at a time</p>
     <span>
-      name: value ----> "isCool":true <br>
+      name: value ----> "isCool":true <br />
       name: value ----> "isCool":false
     </span>
-    <br>
-    <br>
+    <br />
+    <br />
     <div>
-      <input type="radio" id="cool" name="isCool" [value]=true [ngModel]=" pokemon.isCool"
-        (ngModelChange)="toggleIsCool($event)" />
+      <input
+        type="radio"
+        id="cool"
+        name="isCool"
+        [value]="true"
+        [ngModel]="pokemon.isCool"
+        (ngModelChange)="toggleIsCool($event)"
+      />
       <label for="cool">Cool</label>
-      <br>
-      <input type="radio" id="notCool" name="isCool" [value]=false [ngModel]="pokemon.isCool"
-        (ngModelChange)="toggleIsCool($event)" />
+      <br />
+      <input
+        type="radio"
+        id="notCool"
+        name="isCool"
+        [value]="false"
+        [ngModel]="pokemon.isCool"
+        (ngModelChange)="toggleIsCool($event)"
+      />
       <label for="notCool">Not Cool</label>
     </div>
-    <br>
-    <br>
+    <br />
+    <br />
     <!-- Checkboxes -->
     <h3>Check Boxes</h3>
-    <span>
-      name: value ----> "acceptTerms": true
-    </span>
-    <br>
+    <span> name: value ----> "acceptTerms": true </span>
+    <br />
     <div>
       <label>
-        <input type="checkbox" name="acceptTerms" [(ngModel)]="pokemon.acceptTerms" />
+        <input
+          type="checkbox"
+          name="acceptTerms"
+          [(ngModel)]="pokemon.acceptTerms"
+        />
         Please check to accept terms.
       </label>
     </div>
-    <br>
-    <br>
+    <br />
+    <br />
     <!-- Select & Option -->
     <h3>Select & Option</h3>
-    <label>Slect a type:
+    <label
+      >Slect a type:
       <select name="pokemonType" [ngModel]="pokemon?.name">
-        <option *ngFor="let type of pokemonTypes" [value]="type.value" [selected]="type.value === pokemon.type">
-          {{type.value}}
+        <option
+          *ngFor="let type of pokemonTypes"
+          [value]="type.value"
+          [selected]="type.value === pokemon.type"
+        >
+          {{ type.value }}
         </option>
       </select>
     </label>
-    <br>
-    <br>
+    <br />
+    <br />
     <!-- Form Validation -->
     <h3>Form Validation</h3>
     <p>Using template "reference(#)" with "ngModel"</p>
 
     <div>
       <label>
-        <input type="radio" name="isValid" [value]=true [ngModel]="pokemon.isCool" #pokemonName="ngModel" />
+        <input
+          type="radio"
+          name="isValid"
+          [value]="true"
+          [ngModel]="pokemon.isCool"
+          #pokemonName="ngModel"
+        />
         cool
       </label>
       <label>
-        <input type="radio" name="isValid" [value]=false [ngModel]="pokemon.isCool" #pokemonName="ngModel" />
+        <input
+          type="radio"
+          name="isValid"
+          [value]="false"
+          [ngModel]="pokemon.isCool"
+          #pokemonName="ngModel"
+        />
         not cool
       </label>
     </div>
   </form>
-  <br>
+  <br />
   <div>
-    MODEL: {{pokemon | json}} <br>
-    FORM:{{form.value | json}} <br>
-    ERROR: <div *ngIf="!pokemonName.pristine">NOT PRISTINE</div>
+    MODEL: {{ pokemon | json }} <br />
+    FORM:{{ form.value | json }} <br />
+    ERROR:
+    <div *ngIf="!pokemonName.pristine">NOT PRISTINE</div>
   </div>
-  <br>
-  <br>
-  <br>
+  <br />
+  <br />
+  <br />
   <!-- Submitting Form (ngSubmit) -->
   <h3>Submitting Form (ngSubmit)</h3>
   <p>Posting data. Storing object in a database.</p>
-  <br>
+  <br />
   <form #form="ngForm" (ngSubmit)="handleSubmit(form)">
-    <input type="text" [(ngModel)]="pokemon.id" name="id"> <br>
-    <input type="text" [(ngModel)]="pokemon.name" name="name"> <br>
-    <input type="text" [(ngModel)]="pokemon.type" name="type"> <br>
+    <input type="text" [(ngModel)]="pokemon.id" name="id" /> <br />
+    <input type="text" [(ngModel)]="pokemon.name" name="name" /> <br />
+    <input type="text" [(ngModel)]="pokemon.type" name="type" /> <br />
     <button type="submit" [disabled]="!form.valid">save</button>
   </form>
-
+  <button (click)="back()">go Back</button>
 </div>

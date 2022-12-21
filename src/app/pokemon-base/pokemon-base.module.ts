@@ -9,13 +9,28 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { PokemonService } from '../services/pokemon.service';
 import { PokemonTemplateFormComponent } from './pokemon-template-form/pokemon-template-form.component';
 
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: '', component: PokemonListComponent },
+      { path: ':id', component: PokemonTemplateFormComponent }
+    ]
+  }
+];
+
 @NgModule({
   declarations: [
     PokemonListComponent,
     PokemonDetailComponent,
     PokemonTemplateFormComponent
   ],
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forChild(routes)
+  ],
   exports: [PokemonListComponent, PokemonDetailComponent],
   providers: [PokemonService]
 })

@@ -1,3 +1,130 @@
-<p>
-  home works!
-</p>
+<h2>home page</h2>
+<br />
+<br />
+<h1>Routing</h1>
+<p>Need AppRoutingModule in app.module.ts</p>
+<div
+  [ngStyle]="{
+    border: '1px solid #212121',
+    display: 'inline-block',
+    padding: '10px'
+  }"
+>
+  <code>
+    ...app.module.ts <br />
+    <br />
+    imports: [ <br />
+    BrowserModule, <br />
+    AppRoutingModule <br />
+    ],
+  </code>
+</div>
+<br />
+<br />
+<p>Need nav items in the array in app.component.ts</p>
+<div
+  [ngStyle]="{
+    border: '1px solid #212121',
+    display: 'inline-block',
+    padding: '10px'
+  }"
+>
+  <code>
+    ...app.component.ts <br />
+    <br />
+    <br />
+    nav: INav[] = [ <br />
+    <br />
+    link: '/', <br />
+    name: 'Home', <br />
+    exact: true <br />
+    , <br />
+    <br />
+    link: '/badroute', <br />
+    name: 'Bad Route', <br />
+    exact: true <br />
+    <br />
+    ]; <br />
+  </code>
+</div>
+
+<br />
+<br />
+<p>Then iterate nav array in app.html below the router-outlet</p>
+<div
+  [ngStyle]="{
+    border: '1px solid #212121',
+    display: 'inline-block',
+    padding: '10px'
+  }"
+>
+  <code>
+    ....app.html <br />
+    <br />
+    router-outlet <br />
+
+    ngFor="let item of nav" <br />
+    |routerLink|="item.link" <br />
+    routerLinkActive="active" <br />
+    |routerLinkActiveOptions|="| exact: item.exact|" <br />
+    item.name <br />
+  </code>
+</div>
+<br />
+<br />
+<br />
+<h1>Route Parameters (Nested Routes)</h1>
+<p>Need to create another route list in pokemon module.ts</p>
+<p>We specify that "pokemon route" has children (nested) routes</p>
+<div
+  [ngStyle]="{
+    border: '1px solid #212121',
+    display: 'inline-block',
+    padding: '10px'
+  }"
+>
+  <code>
+    ...pokemon-base.module.ts
+    <br />
+    <br />
+    const routes: Routes = [ <br />
+    <br />
+    path: '',<br />
+    children: [<br />
+    | path: '', component: PokemonListComponent |,<br />
+    | path: ':id', component: PokemonTemplateFormComponent |<br />
+    ]<br />
+    ];<br />
+    <br />
+    <br />
+    imports: [<br />
+    CommonModule,<br />
+    HttpClientModule,<br />
+    FormsModule,<br />
+    RouterModule.forChild(routes)<br />
+  </code>
+</div>
+<br />
+<br />
+<br />
+<p>In app.routing.module.ts, we need to indicate our childroutes</p>
+<p>We specify the parent route name.'pokemon/2' in this examp here</p>
+<div
+  [ngStyle]="{
+    border: '1px solid #212121',
+    display: 'inline-block',
+    padding: '10px'
+  }"
+>
+  <code>
+    ...app.routing.module.ts <br />
+    <br />
+    |<br />
+    path: 'pokemon',<br />
+    loadChildren: () =><br />
+    import('./pokemon-base/pokemon-base.module').then(<br />
+    (m) => m.PokemonBaseModule<br />
+    )<br />
+    |,<br />
+  </code>
+</div>
